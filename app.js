@@ -119,7 +119,6 @@ app.get('/createandseedtables', async (req, res) => {
 
         INSERT INTO book_language (id, language)
         VALUES 
-        (DEFAULT, 'Arabic'),
         (DEFAULT, 'English'),
         (DEFAULT, 'French'),
         (DEFAULT, 'German'),
@@ -141,17 +140,18 @@ app.get('/createandseedtables', async (req, res) => {
 
         INSERT INTO book (id, author, title, book_type_id, book_sub_type_id, book_language_id, book_location_id)
         VALUES
-        (DEFAULT, 'MORGAN, Gwyn', '69 A. D. - The Year of Four Emperors', 12, 5, 2, 6),
-        (DEFAULT, 'MANN, Charles', '1491 - New Revelations of the Americas before Columbus', 12, 3, 2, 6);
+        (DEFAULT, 'MORGAN, Gwyn', '69 A. D. - The Year of Four Emperors', 12, 5, 1, 6),
+        (DEFAULT ,'MANN, Charles', '1491 - New Revelations of the Americas before Columbus', 12, 3, 1, 6);
+
         `;
 
-    let err;
-    const result = await pool.query(sql).catch(e => err = e);
-    if (err) {
-        console.error('Sql error: ', err);
-        res.send('Sql error: ' + err);
-    }
-    res.send('Tables created and seeded successfully..');
+        let err;
+        const result = await pool.query(sql).catch(e => err = e);
+        if (err) {
+            console.error('Sql error: ', err);
+            res.send('Sql error: ' + err);
+        }
+        res.send('Tables successfully created and seeded...');
 });
 
 app.use((req, res, next) => {

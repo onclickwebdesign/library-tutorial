@@ -1,0 +1,60 @@
+<table id="books-table" class="table xs-hide table-bordered table-hover table-sm">
+    <thead>
+        <tr>
+            <th style="width:5%;" scope="col"></th>
+            <th style="width:25%;" scope="col">Author</th>
+            <th style="width:35%;" scope="col">Title</th>
+            <th style="width:10%;" scope="col">Type</th>
+            <th style="width:10%;" scope="col">Sub Type</th>
+            <th style="width:10%;" scope="col">Location</th>
+            <th style="width:5%;" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#if books}}
+        {{#each books}}
+        <tr>
+            <td scope="row" class="text-center">
+                <a href="#"><span class="fa fa-pencil"></span></a>
+            </td>
+            <td>
+                <a href="#">{{author}}</a>
+            </td>
+            <td>
+                <a href="#">{{title}} ({{language}})</a>
+            </td>
+            <td>{{type}}</td>
+            <td>{{sub_type}}</td>
+            <td>{{location}}</td>
+            <td class="text-center">
+                <span class="fa fa-times"></span>
+            </td>
+        </tr>
+        {{/each}}
+        {{/if}}
+    </tbody>
+</table>
+
+<container id="book-card-list" class="sm-hide">
+    {{#if books}}
+    {{#each books}}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">
+                <strong>Author:</strong> {{author}}<br/>
+                <strong>Type:</strong> {{type}}<br/>
+                <strong>Sub Type:</strong> {{sub_type}}<br/>
+                <strong>Language:</strong> {{language}}<br/>
+                <strong>Location:</strong> {{location}}<br/>
+            </p>
+            <a href="#">Book details</a>
+            <a href="#"><span class="fa fa-pencil"></span></a>
+            <button>
+                <span class="fa fa-times"></span>
+            </button>
+        </div>
+    </div>
+    {{/each}}
+    {{/if}}
+</container>

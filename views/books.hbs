@@ -10,12 +10,15 @@
             <th style="width:5%;" scope="col"></th>
         </tr>
     </thead>
+
     <tbody>
         {{#if books}}
         {{#each books}}
         <tr>
             <td scope="row" class="text-center">
-                <a href="#"><span class="fa fa-pencil"></span></a>
+                <a href="#">
+                    <span class="fa fa-pencil"></span>
+                </a>
             </td>
             <td>
                 <a href="#">{{author}}</a>
@@ -26,8 +29,10 @@
             <td>{{type}}</td>
             <td>{{sub_type}}</td>
             <td>{{location}}</td>
-            <td class="text-center">
-                <span class="fa fa-times"></span>
+            <td>
+                <a href="#">
+                    <span class="fa fa-times"></span>
+                </a>
             </td>
         </tr>
         {{/each}}
@@ -35,7 +40,7 @@
     </tbody>
 </table>
 
-<container id="book-card-list" class="sm-hide">
+<section id="book-cards-list" class="sm-hide">
     {{#if books}}
     {{#each books}}
     <div class="card">
@@ -48,13 +53,15 @@
                 <strong>Language:</strong> {{language}}<br/>
                 <strong>Location:</strong> {{location}}<br/>
             </p>
-            <a href="#">Book details</a>
-            <a href="#"><span class="fa fa-pencil"></span></a>
-            <button>
+            <a href="#" class="btn btn-primary">Book details</a>
+            <a href="#">
+                <span class="fa fa-pencil"></span>
+            </a>
+            <button class="btn btn-danger">
                 <span class="fa fa-times"></span>
             </button>
         </div>
     </div>
     {{/each}}
     {{/if}}
-</container>
+</section>

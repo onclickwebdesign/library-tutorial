@@ -1,10 +1,10 @@
 const express = require('express');
 const hbs = require('express-handlebars');
-const pool = require('./db');
 const app = express();
 
 const PORT = process.env.PORT || 5000;
 
+// setup express routes
 const mainRoutes = require('./routes');
 const booksRoutes = require('./routes/books');
 const musicRoutes = require('./routes/music');
@@ -16,7 +16,6 @@ app.use('/books', booksRoutes);
 app.use('/music', musicRoutes);
 app.use('/movies', moviesRoutes);
 app.use('/comics', comicsRoutes);
-
 
 app.use('/static', express.static('public'));
 

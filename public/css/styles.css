@@ -40,8 +40,8 @@ header h1 a:hover {
 }
 
 #collections .btn {
-    font-size: 4rem;
     width: 100%;
+    font-size: 4rem;
 }
 
 .sm-hide {
@@ -53,15 +53,15 @@ header h1 a:hover {
         font-size: 2rem;
     }
 
+    #collections .btn {
+        font-size: 2rem;
+    }
+
     .sm-hide {
         display: block;
     }
 
     .xs-hide {
         display: none;
-    }
-
-    #collections .btn {
-        font-size: 2rem;
     }
 }

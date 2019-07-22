@@ -1,8 +1,11 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const hbs = require('express-handlebars');
 const app = express();
 
 const PORT = process.env.PORT || 5000;
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // setup express routes
 const mainRoutes = require('./routes');

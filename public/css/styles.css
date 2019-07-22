@@ -4,9 +4,17 @@
     border-radius: 0;
 }
 
+h3 {
+    margin: 1rem 0;
+}
+
 .flex {
     display: flex;
     justify-content: space-between;
+}
+
+.margin-bottom {
+    margin-bottom: 2rem;
 }
 
 header {
@@ -42,6 +50,33 @@ header h1 a:hover {
 #collections .btn {
     width: 100%;
     font-size: 4rem;
+}
+
+.search-form-container form {
+    position: relative;
+}
+
+#search-books-submit {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+table td.break-word, table td.break-word * {
+    word-break: break-word;
+}
+
+table th.text-center, table td.text-center {
+    text-align: center;
+}
+
+.remove-book {
+    color: #dc3545;
+    font-size: 20px;
+}
+
+.dark-link {
+    color: #212529;
 }
 
 .sm-hide {

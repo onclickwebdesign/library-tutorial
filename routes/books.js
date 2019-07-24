@@ -48,17 +48,18 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/searchbooks', async (req, res) => {
-    const s = req.query.booksearch.trim();
+    const s = pool.escape(`%${req.query.booksearch.trim()}%`);
 
     const sql = 
         `${retrieveBooksSql}
-        WHERE book.author LIKE '%${s}%' OR book.title LIKE '%${s}%' OR book_type.type LIKE '%${s}%' OR book_sub_type.sub_type LIKE '%${s}%' OR book_language.language LIKE '%${s}%' OR book_location.location LIKE '%${s}%' ORDER BY book_type.type, book_sub_type.sub_type, book.author`;
+        WHERE book.author LIKE ${s} OR book.title LIKE ${s} OR book_type.type LIKE ${s} OR book_sub_type.sub_type LIKE ${s} OR book_language.language LIKE ${s} OR book_location.location LIKE ${s} ORDER BY book_type.type, book_sub_type.sub_type, book.author`;
 
     let err;
     const booksResult = await pool.query(sql).catch(e => err = e);
     const books = getJson(booksResult);
 
     if (err) {
+        console.error('Sql error: ', err);
         res.render('books', { books: [], errorMsg: 'There was an error with that search term, please try that again.' });
     } else {
         res.render('books', { books });
@@ -97,8 +98,8 @@ router.get('/addbook', async (req, res) => {
 
 router.post('/insertbook', async (req, res) => {
     const book = {
-        author: req.body.author,
-        title: req.body.title,
+        author: req.body.author.trim(),
+        title: req.body.title.trim(),
         book_type_id: req.body.type,
         book_sub_type_id: req.body.sub_type,
         book_language_id: req.body.language,

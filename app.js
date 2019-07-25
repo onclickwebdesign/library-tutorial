@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const hbs = require('express-handlebars');
+const hbsHelpers = require('./views/helpers');
 const app = express();
 
 const PORT = process.env.PORT || 5000;
@@ -27,7 +28,10 @@ app.engine('hbs', hbs({
     extname: 'hbs',
     defaultLayout: 'main',
     layoutsDir: './views/layouts/',
-    partialsDir: './views/includes/'
+    partialsDir: './views/includes/',
+    helpers: {
+        if_equal: hbsHelpers.isEqualHelper
+    }
 }));
 
 app.set('view engine', 'hbs');

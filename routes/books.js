@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const fetch = require('node-fetch');
 const pool = require('../db');
 
 const retrieveBooksSql = 
@@ -76,7 +77,20 @@ router.get('/searchbooks', async (req, res) => {
 });
 
 router.get('/getbookinfo', async (req, res) => {
-    res.send('Inside the /getbookinfo route...');
+    // https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey
+    const bookquery = req.query.bookquery;
+    const query = `${bookquery}&key=${process.env.GOOGLE_BOOKS_API_KEY}`;
+
+    let err;
+    const bookResponse = await fetch(`https://www.googleapis.com/books/v1/volumes?${query}`).catch(e => err = e);
+
+    if (err) {
+        res.status(err.status || 500).json({ err });
+    } else {
+        const bookJson = await bookResponse.json();
+        const book = bookJson.totalItems > 0 ? bookJson.items[0] : null;
+        res.status(200).json(book);
+    }
 });
 
 router.get('/addbook', async (req, res) => {

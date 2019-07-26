@@ -1,5 +1,5 @@
 <div class="search-form-container margin-bottom">
-    <form action="/books/searchbooks" method="GET" class="margin-bottom">
+    <form id="search-books-form" action="/books/searchbooks" method="GET" class="margin-bottom">
         <input class="form-control" type="text" name="booksearch" id="book-search" placeholder="Search Author, Title, Type, Sub Type, or Location" />
         <button id="search-books-submit" class="btn btn-primary" type="submit">
             <span class="fa fa-search"></span>
@@ -99,3 +99,5 @@
   </div>
 </div>
 <!-- End: remove book modal -->
+
+{{> alert}}

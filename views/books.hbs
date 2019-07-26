@@ -1,5 +1,5 @@
 <div class="search-form-container margin-bottom">
-    <form id="search-books-form" action="/books/searchbooks" method="GET" class="margin-bottom">
+    <form action="/books/searchbooks" method="GET" class="margin-bottom">
         <input class="form-control" type="text" name="booksearch" id="book-search" placeholder="Search Author, Title, Type, Sub Type, or Location" />
         <button id="search-books-submit" class="btn btn-primary" type="submit">
             <span class="fa fa-search"></span>
@@ -33,10 +33,10 @@
                 </a>
             </td>
             <td class="break-word">
-                <a href="javascript:;" class="dark-link get-book-info" data-query="q={{title}}+inauthor:{{author}}">{{author}}</a>
+                <a href="#" class="dark-link">{{author}}</a>
             </td>
             <td class="break-word">
-                <a href="javascript:;" class="dark-link get-book-info" data-query="q={{title}}+inauthor:{{author}}">{{title}} ({{language}})</a>
+                <a href="#" class="dark-link">{{title}} ({{language}})</a>
             </td>
             <td>{{type}}</td>
             <td>{{sub_type}}</td>
@@ -65,7 +65,7 @@
                 <strong>Language:</strong> {{language}}<br/>
                 <strong>Location:</strong> {{location}}<br/>
             </p>
-            <a href="javascript:;" class="btn btn-primary get-book-info" data-query="q={{title}}+inauthor:{{author}}">Book details</a>
+            <a href="#" class="btn btn-primary get-book-info">Book details</a>
             <a href="/books/updatebook?id={{id}}" class="btn btn-secondary edit-book">
                 <span class="fa fa-pencil"></span>
             </a>
@@ -99,35 +99,3 @@
   </div>
 </div>
 <!-- End: remove book modal -->
-
-<!-- Start: book details modal -->
-<div class="modal fade" id="bookDetailsModal" tabindex="-1" role="dialog" aria-labelledby="bookDetailsModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="bookDetailsModalLabel"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="flex">
-            <img src="" alt="Book Cover" />
-            <div class="book-details-container">
-                <p><strong>Published: </strong> <span class="published"></span></p>
-                <p><strong>Pages: </strong> <span class="pages"></span></p>
-                <p><strong>Category: </strong> <span class="categories"></span></p>
-                <p><strong>Author(s): </strong> <span class="authors"></span></p>
-            </div>
-        </div>
-        <p class="description"></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End: book details modal -->
-
-{{> alert}}
